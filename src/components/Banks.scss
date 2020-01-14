@@ -1,0 +1,13 @@
+
+.bank-listing-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40px;
+}
+
+.bank-listing-container__item {
+  width: 25%;
+  flex-basis: 25%;
+  font-size: 14px;
+  line-height: 18px;
+}
