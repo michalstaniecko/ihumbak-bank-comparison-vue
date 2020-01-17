@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ imgPath }}
     <filters v-on:update:filters="filtersUpdate" v-bind:filters="allFilters"/>
     <banks v-bind:banks="filteredBanks" v-bind:filters="allFilters" />
   </div>
@@ -17,6 +16,7 @@
       Banks,
       Filters
     },
+    props: ['imgPath'],
     data() {
       return {
         banks: [],
