@@ -17,7 +17,7 @@
       <div class="selected-filters__tip">Wybrane filtry, kliknij by usunąć:</div>
       <ul>
         <li class="selected-filters__item" v-for="filter in this.selectedFilters" @click="clearSelect(filter)">
-          {{ filter.name }}: {{ filter.value }}
+          <strong>{{ filters[filter.name] }}:</strong> {{ filter.value == 'bezplatne' ? 'Tak' : 'Tak, bezwarunkowo' }}
         </li>
       </ul>
     </div>
@@ -27,20 +27,10 @@
 <script>
 
   export default {
+    props: ['filters'],
     data() {
       return {
         selectedFilters: [],
-        filters: {
-          'bezplatne_prowadzenie_konta': 'Bezpłatne prowadzenie konta',
-          'bezplatna_karta': 'Bezpłatna karta',
-          'bezplatne_przelewy': 'Bezpłatne przelewy',
-          'bezplatne_stale_zlecenia': 'Bezpłatne stałe zlecenia',
-          'bezplatne_przelewy_blyskawiczne': 'Bezpłatne przelewy błyskawiczne',
-          'bezplatne_autoryzacje_sms': 'Bezpłatne autoryzację SMS',
-          'bezplatne_wyplaty_z_bankomatu': 'Bezpłatne wypłaty z bankomatu',
-          'bezplatne_wplaty_we_wplatomacie': 'Bezpłatne wpłaty we wpłatomacie',
-          'bezplatne_polecenia_zaplaty': 'Bezpłatne polecenia zapłaty'
-        },
         choices: []
       }
     },

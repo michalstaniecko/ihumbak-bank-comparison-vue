@@ -1,8 +1,8 @@
 <template>
   <div>
-
-    <filters v-on:update:filters="filtersUpdate"/>
-    <banks v-bind:banks="filteredBanks" />
+    {{ imgPath }}
+    <filters v-on:update:filters="filtersUpdate" v-bind:filters="allFilters"/>
+    <banks v-bind:banks="filteredBanks" v-bind:filters="allFilters" />
   </div>
 </template>
 
@@ -21,7 +21,18 @@
       return {
         banks: [],
         filters: [],
-        filteredBanks: []
+        filteredBanks: [],
+        allFilters: {
+          'bezplatne_prowadzenie_konta': 'Bezpłatne prowadzenie konta',
+          'bezplatna_karta': 'Bezpłatna karta',
+          'bezplatne_przelewy': 'Bezpłatne przelewy',
+          'bezplatne_stale_zlecenia': 'Bezpłatne stałe zlecenia',
+          'bezplatne_przelewy_blyskawiczne': 'Bezpłatne przelewy błyskawiczne',
+          'bezplatne_autoryzacje_sms': 'Bezpłatne autoryzację SMS',
+          'bezplatne_wyplaty_z_bankomatu': 'Bezpłatne wypłaty z bankomatu',
+          'bezplatne_wplaty_we_wplatomacie': 'Bezpłatne wpłaty we wpłatomacie',
+          'bezplatne_polecenia_zaplaty': 'Bezpłatne polecenia zapłaty'
+        },
       }
     },
     mounted() {

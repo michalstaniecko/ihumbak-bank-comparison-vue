@@ -17,7 +17,8 @@ function ihumbak_bank_comparison_vue_assets() {
 add_shortcode('bank_comparison_vue', 'ihumbak_bank_comparison_vue');
 
 function ihumbak_bank_comparison_vue() {
-  return '<div id="app"><bank-comparison></bank-comparison></div>';
+  $imgPath = plugin_dir_url(__FILE__).'img/';
+  return '<div id="app"  ><bank-comparison img-path="'.$imgPath.'"></bank-comparison></div>';
 }
 
 
