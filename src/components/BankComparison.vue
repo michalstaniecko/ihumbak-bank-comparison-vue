@@ -54,7 +54,7 @@
         this.filteredBanks = this.banks.filter(bank => {
           let flag = true;
           this.filters.map(filter => {
-            if (!bank.params[filter.name][filter.value]) {
+            if (!bank.acf.params[filter.name][filter.value]) {
               flag = false;
             }
           })

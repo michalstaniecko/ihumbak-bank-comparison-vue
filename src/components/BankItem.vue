@@ -8,12 +8,12 @@
     </div>
     <div class="tabs-menu">
       <a href="#" @click.prevent="selectTab('params')" :class="{'tab-active' : selectedTab === 'params'}">Parametry konta</a>
-      <a href="#" @click.prevent="selectTab('promo')" :class="{'tab-active' : selectedTab === 'promo'}">Aktualna promocja</a>
+      <a href="#" @click.prevent="selectTab('promo')" :class="{'tab-active' : selectedTab === 'promo'}" v-if="bank.acf.benefits.promo.enabled">Aktualna promocja</a>
     </div>
     <div v-if="selectedTab==='params'">
 
       <ul class="bank-listing-container__params">
-        <li v-for="(param, key) in bank.params" class="bank-listing-container__params-item" :class="{ 'bank-free': param.bezwarunkowo, 'bank-warning': !param.bezwarunkowo && param.bezplatne, 'bank-fee':!param.bezplatne }">
+        <li v-for="(param, key) in bank.acf.params" class="bank-listing-container__params-item" :class="{ 'bank-free': param.bezwarunkowo, 'bank-warning': !param.bezwarunkowo && param.bezplatne, 'bank-fee':!param.bezplatne }">
           <div class="bank-listing-container__params-name">
             {{ filters[key] }}
             <i class="fa fa-check" v-if="param.bezwarunkowo" title="Bezpłatne bezwarunkowo"></i>
@@ -34,7 +34,7 @@
       </ul>
     </div>
     <div v-if="selectedTab === 'promo'">
-      aktualna promocja
+      <div v-html="bank.acf.benefits.promo.description"></div>
     </div>
 
   </div>

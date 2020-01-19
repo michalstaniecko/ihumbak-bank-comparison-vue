@@ -49,7 +49,6 @@
         })
       },
       optionChanged(e) {
-        console.log(e);
         this.selectedFilters = this.selectedFilters.filter(filter => {
           if (filter.name == e.target.name) return false;
           return true;
