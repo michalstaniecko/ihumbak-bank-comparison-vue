@@ -15,7 +15,7 @@
       <ul class="bank-listing-container__params">
         <li v-for="(param, key) in bank.acf.params" class="bank-listing-container__params-item" :class="{ 'bank-free': param.bezwarunkowo, 'bank-warning': !param.bezwarunkowo && param.bezplatne, 'bank-fee':!param.bezplatne }">
           <div class="bank-listing-container__params-name">
-            {{ filters[key] }}
+            {{ filters[key].label }}
             <i class="fa fa-check" v-if="param.bezwarunkowo" title="Bezpłatne bezwarunkowo"></i>
             <span v-if="!param.bezwarunkowo && param.bezplatne" title="Bezpłatne pod warunkiem"><i class="fa fa-check"></i><i class="fa fa-warning" ></i></span>
             <i class="fa fa-times" v-if="!param.bezplatne" title="Opłata"></i>

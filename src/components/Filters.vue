@@ -4,11 +4,10 @@
     <div class="form-filters">
       <div class="form-filters__container">
         <div class="form-filters__item" v-for="(filter, key) in filters">
-          <div>{{ filter }}</div>
+          <div>{{ filter.label }}</div>
           <select :name="key" class="filter js-select " style="width:100%" v-on:choice="optionChanged">
             <option value="">Wybierz</option>
-            <option value="bezplatne">Bezpłatne</option>
-            <option value="bezwarunkowo">Bezpłatne bezwarunkowo</option>
+            <option v-bind:value="choice.value" v-for="choice in filter.choices">{{ choice.label}}</option>
           </select>
         </div>
       </div>
@@ -17,7 +16,7 @@
       <div class="selected-filters__tip">Wybrane filtry, kliknij by usunąć:</div>
       <ul>
         <li class="selected-filters__item" v-for="filter in this.selectedFilters" @click="clearSelect(filter)">
-          <strong>{{ filters[filter.name] }}:</strong> {{ filter.value == 'bezplatne' ? 'Tak' : 'Tak, bezwarunkowo' }}
+          <strong>{{ filters[filter.name].label }}:</strong> {{ filteredValue(filter.value)  }}
         </li>
       </ul>
     </div>
@@ -35,6 +34,13 @@
       }
     },
     methods: {
+      filteredValue(value) {
+        if (value == 1) {
+          value = 'Tak'
+        }
+
+        return value;
+      },
       clearSelect(filter) {
         let choice = '';
         this.choices.map(_choice => {
